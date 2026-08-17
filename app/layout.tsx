@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Lay from "./comp/Lay"
+
 
 
 export const metadata: Metadata = {
@@ -10,10 +12,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+
     <html lang="en">
       <body>
-        {children}
+        <Lay>
+          {children}
+        </Lay>
       </body >
     </html >
+
   );
 }
