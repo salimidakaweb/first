@@ -16,6 +16,10 @@ pnpm dev
 bun dev
 # or
 npx next dev -p xxxx(port)
+# json server
+npm install -g json-server
+and
+json-server --watch src --port xxx
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
