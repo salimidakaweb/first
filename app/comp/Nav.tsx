@@ -12,10 +12,10 @@ function Nav() {
             href: "/",
             title: "Home"
         }, {
-            href: "/Store",
+            href: "/store",
             title: "Store"
         }, {
-            href: "/About",
+            href: "/about",
             title: "About"
         }
 

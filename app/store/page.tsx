@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Store() {
+function store() {
   return (
-    <div>Store</div>
+    <div>store</div>
   )
 }
 
-export default Store
+export default store
