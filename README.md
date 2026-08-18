@@ -18,7 +18,7 @@ bun dev
 npx next dev -p xxxx(port)
 # json server
 npm install -g json-server
-and
+#and
 json-server --watch src --port xxx
 ```
 
