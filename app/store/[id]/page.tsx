@@ -1,8 +1,15 @@
 import { IProductItems } from '@/app/comp/ProductItems'
 import React from 'react'
+interface Iparams {
+params: Promise<{id:string}>
+SearchParams:Promise<{}>
+}
 
-async function product() {
-const result = await fetch ("http://localhost:9000/products/1")
+
+async function product({params}:Iparams ) {
+    const {id} = await params;
+ 
+const result = await fetch (`http://localhost:9000/products/${id}`)
 const data = (await result.json()) as IProductItems
     return (
         <div className='grid grid-cols-12 mt-4 shadow-md'>
