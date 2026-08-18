@@ -1,5 +1,5 @@
 import React from 'react'
-interface IProductItems {
+export interface IProductItems {
     id: string,
     image: string,
     title: string,
