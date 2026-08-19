@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Lay from "./comp/Lay"
+import ShopingCartContextProvider from "@/context/ShopingCartContext";
 
 
 
@@ -15,9 +16,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
     <html lang="en">
       <body>
-        <Lay>
-          {children}
-        </Lay>
+        <ShopingCartContextProvider>
+          <Lay>
+            {children}
+          </Lay>
+        </ShopingCartContextProvider>
       </body >
     </html >
 
