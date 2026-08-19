@@ -1,7 +1,18 @@
+import CartItems from "../comp/CartItems";
+import Cont from "../comp/Cont";
+
 export default function Cart() {
   return (
-    <div>
-      Cart Page
-    </div>
+    <Cont>
+      <div>
+        <h1 className="pb-2">cart item</h1>
+
+          <CartItems />
+          <CartItems />
+          <CartItems />
+          <CartItems />
+        </div>
+
+    </Cont>
   );
 }
