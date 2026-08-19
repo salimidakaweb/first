@@ -19,10 +19,10 @@
             "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaNIS9My4sPZkoEMFokYBiIb6RPWqTGl1BMrXEi9WBsxIx2jlz7e3BImg&s=10",
             "title": "product 3",
             "description": " loremloremloremloremloremloremloremloremloremloremloremloremloremlor",
-            "  price": 90
+            "price": 90
         },
         {
-            " id": "4",
+            "id": "4",
             "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBB4LQTn0vRq4ydPLp-uTj_lEUHOHYWUU18JlCq5KuMw&s=10",
             "title": "product 4",
             "description": " emloremloremloremloremloremloremloremloremloremloremloremloremlor",
