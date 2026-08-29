@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { IProductItems } from "../comp/ProductItems";
 import { formatNumberWithCommas } from "@/utils/number";
-import { Condiment } from "next/font/google";
-import { text } from "stream/consumers";
 
 interface IDiscountsData {
   id: number;
