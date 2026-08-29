@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 interface ShopingCartContextProviderProps {
    children: React.ReactNode
 }
@@ -23,15 +23,14 @@ export const useShopingCartContext = () => {
 export default function ShopingCartContextProvider({ children }: ShopingCartContextProviderProps) {
 
    const [CartItems, setCartItems] = useState<CartItems[]>([]);
+   const [isLoaded, setIsLoaded] = useState(false);
 
    const cartTotaliQty = CartItems.reduce((totalQty, item) => {
       return totalQty + item.qty
    }, 0)
-
    const getProductQty = (id: number) => {
       return CartItems.find(item => item.id == id)?.qty || 0
    };
-
    const handleIncreaseProductQty = (id: number) => {
       setCartItems((currentItems) => {
          let isNotProductExist = currentItems.find((item) => item.id == id) == null;
@@ -49,10 +48,8 @@ export default function ShopingCartContextProvider({ children }: ShopingCartCont
                }
             });
          }
-
       });
    };
-
    const handleDecreaseProductQty = (id: number) => {
       setCartItems(currentItems => {
          let isLastOne = currentItems.find(item => item.id == id)?.qty == 1
@@ -77,9 +74,21 @@ export default function ShopingCartContextProvider({ children }: ShopingCartCont
          return currentItems.filter((item) => item.id != id);
       })
    }
+   useEffect(() => {
+      const storedCartItems = localStorage.getItem("cartItems")
+      if (storedCartItems) {
+         setCartItems(JSON.parse(storedCartItems));
+      }
+      setIsLoaded(true);
+   }, [])
+   useEffect(() => {
+      if (isLoaded) {
+         localStorage.setItem("cartItems", JSON.stringify(CartItems))
+      }
+   }, [CartItems, isLoaded]);
 
    return (
-      <ShopingCartContext.Provider value={{ CartItems, handleIncreaseProductQty, getProductQty, cartTotaliQty, handleDecreaseProductQty,handleRemoveProduct }}>
+      <ShopingCartContext.Provider value={{ CartItems, handleIncreaseProductQty, getProductQty, cartTotaliQty, handleDecreaseProductQty, handleRemoveProduct }}>
          {children}
       </ShopingCartContext.Provider>
    );

@@ -12,9 +12,6 @@ interface IDiscountsData {
   code: string;
   percentage: number
 }
-
-
-
 export default function Cart() {
   const { CartItems } = useShopingCartContext()
 
@@ -28,7 +25,6 @@ export default function Cart() {
     axios(`http://localhost:9000/products`).then(result => {
       const { data } = result
       setData(data);
-
     })
   }, [])
   let totalprice = CartItems.reduce((total, item) => {
@@ -44,10 +40,8 @@ export default function Cart() {
         setFinalprice(finalprice)
         setDiscountsPrice(DiscountsPrice)
 
-      }
-    );
+      });
   };
-
   return (
     <Cont>
       <div>
@@ -70,7 +64,5 @@ export default function Cart() {
           <button onClick={handleSubmitDiscount} className="bg-amber-300 rounded ml-1 px-1">submit</button>
         </div>
       </div>
-
     </Cont>
-  );
-}
+  );}
