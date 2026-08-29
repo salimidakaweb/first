@@ -14,6 +14,7 @@ type TShopingCartContextType = {
    getProductQty: (id: number) => number;
    cartTotaliQty: number;
    handleDecreaseProductQty: (id: number) => void;
+   handleRemoveProduct: (id: number) => void;
 };
 const ShopingCartContext = createContext({} as TShopingCartContextType);
 export const useShopingCartContext = () => {
@@ -71,10 +72,14 @@ export default function ShopingCartContextProvider({ children }: ShopingCartCont
          }
       });
    };
-
+   const handleRemoveProduct = (id: number) => {
+      setCartItems(currentItems => {
+         return currentItems.filter((item) => item.id != id);
+      })
+   }
 
    return (
-      <ShopingCartContext.Provider value={{ CartItems, handleIncreaseProductQty, getProductQty, cartTotaliQty, handleDecreaseProductQty }}>
+      <ShopingCartContext.Provider value={{ CartItems, handleIncreaseProductQty, getProductQty, cartTotaliQty, handleDecreaseProductQty,handleRemoveProduct }}>
          {children}
       </ShopingCartContext.Provider>
    );
