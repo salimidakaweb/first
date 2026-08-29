@@ -1,3 +1,4 @@
+import AddToCard from '@/app/comp/AddToCard';
 import { IProductItems } from '@/app/comp/ProductItems'
 import React from 'react'
 interface Iparams {
@@ -21,9 +22,7 @@ const data = (await result.json()) as IProductItems
                 <p>{data.description}</p>
                 <p className='font-bold'>price: <span>{data.price}</span>$</p>
                 <div className='pt-5'>
-                   <button className='bg-amber-300 rounded px-2'>+</button> 
-                   <span className='px-2'>23</span>
-                   <button className='bg-amber-300 rounded px-2'>-</button> 
+                   <AddToCard id={id} />
                 </div>
             </div>
         </div>

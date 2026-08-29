@@ -3,11 +3,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { title } from 'process'
 import Cont from './Cont'
+import { useShopingCartContext } from '@/context/ShopingCartContext'
 
 
 function Nav() {
     const pathname = usePathname()
-
+    const { cartTotaliQty } = useShopingCartContext()
     const NavLinks = [
         {
             href: "/",
@@ -45,6 +46,7 @@ function Nav() {
                             href={NavBag.href}>
                             {NavBag.title}
                         </Link>
+                        <span className='px-2 mx-2 text-white rounded-full bg-red-600 '>{cartTotaliQty}</span>
                     </div>
                 </div>
             </Cont>
