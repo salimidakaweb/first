@@ -1,12 +1,19 @@
 import React from 'react'
-import ProductItems, { IProductItems } from '../comp/ProductItems'
+import ProductItems, { IProductItems, IProductList } from '../comp/ProductItems'
 import Link from 'next/link'
+import Pagination from '../comp/Pagination';
 
-async function store() {
+interface IStoreProos {
+  params: Promise<{}> ;
+  searchParams: Promise<{page: string; per_page: string;}> ;
+}
+async function store({searchParams}: IStoreProos) {
 
-const result = await fetch("http://localhost:9000/products")
-const data = await result.json() as IProductItems[]
+  const page = (await searchParams).page ?? "1"
+  const per_page = (await searchParams).per_page ?? "5"
 
+  const result = await fetch(`http://localhost:9000/products?_page=${page}&_per_page=${per_page}`)
+  const data = await result.json() as IProductList
 
   return (
     <div>
@@ -14,13 +21,14 @@ const data = await result.json() as IProductItems[]
         Store Page
       </h3>
       <div className="grid grid-cols-4 gap-4">
-        {data.map((item) => (
+        {data.data.map((item) => (
           <Link key={item.id} href={`/store/${item.id}`}>
             <ProductItems {...item} />
           </Link>
         ))}
       </div>
-    </div>
+      <Pagination  pageCount={data.pages}/>
+    </div> 
   )
 }
 

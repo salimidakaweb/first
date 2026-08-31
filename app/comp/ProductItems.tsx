@@ -6,7 +6,18 @@ export interface IProductItems {
     description: string,
     price: number
 }
-function ProductItems({image,title,price}:IProductItems) {
+
+export interface IProductList {
+    first: number | null;
+    items: number | null;
+    last: number | null;
+    next: number | null;
+    pages: number ;
+    prev: null | number;
+    data: IProductItems[]
+}
+
+function ProductItems({ image, title, price }: IProductItems) {
     return (
         <div className="shadow-lg p-4 rounded-lg">
             <img src={image} alt="" />
