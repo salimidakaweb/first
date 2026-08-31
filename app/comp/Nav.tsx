@@ -19,6 +19,9 @@ function Nav() {
         }, {
             href: "/about",
             title: "About"
+        },{
+            href: "/dashboard",
+            title: "panel"
         },
 
     ]
