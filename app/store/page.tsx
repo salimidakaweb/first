@@ -2,6 +2,7 @@ import React from 'react'
 import ProductItems, { IProductItems, IProductList } from '../comp/ProductItems'
 import Link from 'next/link'
 import Pagination from '../comp/Pagination';
+import Search from '../comp/Search';
 
 interface IStoreProos {
   params: Promise<{}> ;
@@ -20,6 +21,7 @@ async function store({searchParams}: IStoreProos) {
       <h3 className="py-4 font-bold text-2xl">
         Store Page
       </h3>
+      <Search />
       <div className="grid grid-cols-4 gap-4">
         {data.data.map((item) => (
           <Link key={item.id} href={`/store/${item.id}`}>
